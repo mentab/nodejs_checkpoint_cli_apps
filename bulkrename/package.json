@@ -1,5 +1,5 @@
 {
-  "name": "starredgithub",
+  "name": "bulkrename",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -8,5 +8,6 @@
     "start": "node --watch server.js"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "type": "module"
 }
