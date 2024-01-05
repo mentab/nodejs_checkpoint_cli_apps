@@ -1,5 +1,5 @@
-const inquirer = require('inquirer');
-const cheerio = require('cheerio');
+const inquirer = require('inquirer')
+const cheerio = require('cheerio')
 
 async function fetchData(url) {
   const response = await fetch(url)

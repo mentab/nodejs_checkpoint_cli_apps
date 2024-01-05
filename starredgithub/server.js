@@ -8,10 +8,10 @@ async function fetchGithubRepositories(searchParams) {
     const response = await fetch(url)
 
     if (!response.ok) {
-        throw new Error(`GitHub API request failed with status ${response.status}`);
+        throw new Error(`GitHub API request failed with status ${response.status}`)
     }
 
-    return await response.json();
+    return await response.json()
 }
 
 async function getMostStarredGithubRepository() {
@@ -30,24 +30,24 @@ async function getMostStarredGithubRepository() {
             console.log(`The most starred github project is ${mostStarredGithub.items[0].name}`)
         }
     } catch (error) {
-        console.error(error.message);
+        console.error(error.message)
     }
 }
 
 function isDateValid(dateStr) {
-  return !isNaN(new Date(dateStr));
+  return !isNaN(new Date(dateStr))
 }
 
 function convertCmdArgsToSearch() {
-    const argLength = process.argv.length;
+    const argLength = process.argv.length
 
     if (argLength === 2) {
         return ''
     } else if (argLength === 3) {
         throw new Error('Missing one date argument')
     } else {
-        const startDate = process.argv[2];
-        const endDate = process.argv[3];
+        const startDate = process.argv[2]
+        const endDate = process.argv[3]
         if (isDateValid(startDate) && isDateValid(endDate)) {
             return `created ${startDate}..${endDate}`
         } else {
@@ -57,5 +57,5 @@ function convertCmdArgsToSearch() {
 }
 
 (async () => {
-    await getMostStarredGithubRepository();
-})();
+    await getMostStarredGithubRepository()
+})()

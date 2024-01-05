@@ -1,12 +1,12 @@
-import { readdir, rename, stat } from 'node:fs/promises';
-import path from 'node:path'; 
+import { readdir, rename, stat } from 'node:fs/promises'
+import path from 'node:path'
 
 const directoryPath = './files'
 const prefix = 'test'
 
 async function bulkRename(directoryPath, prefix) {
     try {
-        const files = await readdir(directoryPath);
+        const files = await readdir(directoryPath)
         for (const [index, file] of files.entries()) {
             const oldFilePath = path.join(directoryPath, file)
 
@@ -17,14 +17,16 @@ async function bulkRename(directoryPath, prefix) {
                 const newFilePath = path.join(directoryPath, newFileName)
       
                 await rename(oldFilePath, newFilePath)
-                console.log(`Renamed ${file} to ${newFileName}`);
+                console.log(`Renamed ${file} to ${newFileName}`)
             } else {
-                console.log(`${file} is a directory and will not be renamed.`);
+                console.log(`${file} is a directory and will not be renamed.`)
             }
         }
     } catch (err) {
-        console.error('Error reading directory:', err);
+        console.error('Error reading directory:', err)
     }  
 }
 
-await bulkRename(directoryPath, prefix)
+(async () => {
+    await bulkRename(directoryPath, prefix)
+})()
